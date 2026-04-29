@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Unique label for this LaunchAgent -->
+    <key>Label</key>
+    <string>local.update-claude</string>
+
+    <!-- Script to run -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/usr/local/bin/update-claude.sh</string>
+    </array>
+
+    <!-- Run automatically when the user logs in -->
+    <key>RunAtLoad</key>
+    <true/>
+
+    <!-- Stdout / Stderr logs (optional, in addition to the script's own log) -->
+    <key>StandardOutPath</key>
+    <string>/tmp/update-claude.stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/update-claude.stderr.log</string>
+</dict>
+</plist>
