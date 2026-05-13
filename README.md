@@ -34,12 +34,14 @@ Homebrew doesn't auto-update installed packages. Without manual intervention, `c
 8. If nothing changed, the run is silent — no notification spam.
 9. Everything is appended to `~/.claude-update.log` for a full audit trail.
 
-### Why `RunAtLoad` instead of a cron schedule
+### Why `RunAtLoad` + `StartInterval`
 
-`RunAtLoad: true` in the LaunchAgent plist tells macOS to execute the script each time the agent is loaded — which happens once per user login session. This means:
-- It runs when you log in after a full shutdown or restart.
-- It runs when you log out and back in.
-- It does **not** run on wake from sleep (which is intentional — brew updates don't need to happen every time you open your laptop lid).
+The LaunchAgent uses two triggers:
+
+- **`RunAtLoad: true`** — fires immediately on every login (startup, restart, or re-login after logout).
+- **`StartInterval: 3600`** — fires every hour after that, so waking from sleep is also covered within at most one hour.
+
+Together they ensure updates are checked whether you boot fresh or just open the lid after the Mac has been sleeping.
 
 ---
 

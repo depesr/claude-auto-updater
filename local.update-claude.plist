@@ -18,6 +18,10 @@
     <key>RunAtLoad</key>
     <true/>
 
+    <!-- Also run every hour (3600 seconds) so wake-from-sleep is covered -->
+    <key>StartInterval</key>
+    <integer>3600</integer>
+
     <!-- Stdout / Stderr logs (optional, in addition to the script's own log) -->
     <key>StandardOutPath</key>
     <string>/tmp/update-claude.stdout.log</string>
